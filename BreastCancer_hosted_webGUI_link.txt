@@ -1,0 +1,6 @@
+Name: Nwamata Ogochukwu Christiana
+Matric Number: 22CG031890
+Machine Learning Algorithm Used: Logistic Regression
+Model persistence method used: Joblib
+Live URL of the hosted application: https://breast-cancer-prediction-6nhg.onrender.com
+GitHub repository link: https://github.com/chr454/Breast_Cancer_Prediction
