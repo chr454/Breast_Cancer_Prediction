@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction</title>
+</head>
+<body>
+
+    <h1>Medical Diagnostic Tool</h1>
+
+    {% if error %}
+    <div style="color: red; border: 1px solid red; padding: 10px;">
+        <h3>Error: {{ error }}</h3>
+    </div>
+    {% endif %}
+
+    {% if prediction %}
+        {% if "MALIGNANT" in prediction %}
+            <div style="color: red; border: 2px solid red; padding: 10px;">
+                <h2>{{ prediction }}</h2>
+            </div>
+        {% else %}
+            <div style="color: green; border: 2px solid green; padding: 10px;">
+                <h2>{{ prediction }}</h2>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <hr>
+
+    <form action="/predict" method="POST">
+        
+        {% if features %}
+            <h3>Enter Patient Data:</h3>
+            
+            {% for feature in features %}
+                <label for="{{ feature }}">{{ feature }}:</label><br>
+                <input type="number" step="any" name="{{ feature }}" required 
+                       value="{{ input_values[feature] if input_values else '' }}">
+                <br><br>
+            {% endfor %}
+            
+            <button type="submit">Analyze Data</button>
+            <a href="/">Clear Form</a>
+
+        {% else %}
+            <p style="color: red;">
+                Error: No features loaded. Please check model_features.pkl
+            </p>
+        {% endif %}
+
+    </form>
+
+</body>
+</html>
